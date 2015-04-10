@@ -1,0 +1,7 @@
+C:\Users\bartl_000\Documents\Visual Studio 2013\Projects\ConsoleApplication2\UnitTestProject1\bin\Debug\UnitTestProject1.dll
+C:\Users\bartl_000\Documents\Visual Studio 2013\Projects\ConsoleApplication2\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
+C:\Users\bartl_000\Documents\Visual Studio 2013\Projects\ConsoleApplication2\UnitTestProject1\obj\Debug\UnitTestProject1.csprojResolveAssemblyReference.cache
+C:\Users\bartl_000\Documents\Visual Studio 2013\Projects\ConsoleApplication2\UnitTestProject1\obj\Debug\UnitTestProject1.dll
+C:\Users\bartl_000\Documents\Visual Studio 2013\Projects\ConsoleApplication2\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
+C:\Users\bartl_000\Documents\Visual Studio 2013\Projects\ConsoleApplication2\UnitTestProject1\bin\Debug\ConsoleApplication2.exe
+C:\Users\bartl_000\Documents\Visual Studio 2013\Projects\ConsoleApplication2\UnitTestProject1\bin\Debug\ConsoleApplication2.pdb
