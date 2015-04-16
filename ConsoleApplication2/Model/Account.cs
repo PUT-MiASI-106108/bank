@@ -27,7 +27,7 @@ namespace ConsoleApplication2
                 throw new ArgumentException(accountType+" is not a valid account type","AccountType");
         }
 
-        public bool isWithdrawalPossible(decimal amount)
+        public virtual bool isWithdrawalPossible(decimal amount)
         {
             if (this._balance > amount)
                 return true;
@@ -36,7 +36,7 @@ namespace ConsoleApplication2
             else return false;
         }
 
-        public void withdraw(decimal amount)
+        public virtual void withdraw(decimal amount)
         {
             if (this.isWithdrawalPossible(amount))
                 this._balance -= amount;
@@ -59,7 +59,7 @@ namespace ConsoleApplication2
             get { return this._cardNumber; }
         }
 
-        public decimal Balance
+        public virtual decimal Balance
         {
             get { return this._balance; }
         }
