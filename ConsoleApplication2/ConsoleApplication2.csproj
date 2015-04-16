@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Decorator\DebitAccount.cs" />
+    <Compile Include="Decorator\DebitAccountWithInterest.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\AccountTypes.cs" />
     <Compile Include="Bank.cs" />
@@ -56,11 +58,20 @@
     <Compile Include="ViewModel\CustomerAccounts.cs" />
     <Compile Include="ViewModel\TransactionManager.cs" />
     <Compile Include="Model\TransactionTypes.cs" />
+    <Compile Include="Visitor\HtmlVisitor.cs" />
+    <Compile Include="Visitor\IVisitor.cs" />
+    <Compile Include="Visitor\Report.cs" />
+    <Compile Include="Visitor\ReportByAccNumber.cs" />
+    <Compile Include="Visitor\ReportByMonth.cs" />
+    <Compile Include="Visitor\ReportAll.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
+    <None Include="Decorator\DecoratorClassDiagram.cd" />
+    <None Include="Visitor\VisitorClassDiagram.cd" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
