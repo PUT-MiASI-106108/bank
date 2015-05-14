@@ -8,17 +8,34 @@ namespace ConsoleApplication2.Mediator
 {
     public class Mediator
     {
+        public List<Transaction> transactions = new List<Transaction>();
         private List<ViewModel.Bank> _banks;
 
-        public Mediator() { }
-
-        public void ResolveTransactions()
+        public Mediator() 
         {
-            List<Transaction> transactions = new List<Transaction>();
+            this._banks = new List<ViewModel.Bank>();
+        }
+
+        public List<ViewModel.Bank> Banks
+        {
+            get { return this._banks; }
+            set { this._banks = value; }
+        }
+
+        private void gatherTransactions()
+        {
             foreach (ViewModel.Bank bank in this._banks)
             {
-                transactions.Concat(bank.OutgoingTransactions());
+                foreach (Transaction trans in bank.OutgoingTransactions())
+                {
+                    transactions.Add(trans);
+                }
             }
+        }
+
+        public void resolveTransactions()
+        {
+            this.gatherTransactions();
             foreach (Transaction trans in transactions)
             {
                 uint signature = trans.ForeignCard;

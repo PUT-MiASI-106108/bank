@@ -28,7 +28,7 @@ namespace ConsoleApplication2
             _transactions.Add(new Transaction(this.ID, cardNo1, cardNo2, amount, TransactionTypes.Incoming) { Completed = true });
         }
 
-        public void newOutgoingTransaction(uint amount, uint cardNo1, uint cardNo2)
+        public void newOutgoingTransaction(decimal amount, uint cardNo1, uint cardNo2)
         {
             _transactions.Add(new Transaction(this.ID, cardNo1, cardNo2, amount, TransactionTypes.Outgoing));
         }
@@ -56,7 +56,7 @@ namespace ConsoleApplication2
                 return 
                 (
                     from transaction in this._transactions 
-                    where (bool)transaction.Completed == true 
+                    where (bool)transaction.Completed == false 
                     select transaction
                 ).ToList();
             }

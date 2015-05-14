@@ -38,9 +38,9 @@ namespace ConsoleApplication2.ViewModel
         public List<Transaction> OutgoingTransactions()
         {
             List<Transaction> transactions = new List<Transaction>();
-            foreach (Transaction trans in base.Transactions)
+            foreach (Transaction trans in base.UncompletedTransactions)
             {
-                if (!trans.Completed && trans.TransactionType.Equals(TransactionTypes.Outgoing))
+                if (trans.TransactionType.Equals(TransactionTypes.Outgoing))
                 {
                     try
                     {

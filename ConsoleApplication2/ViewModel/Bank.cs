@@ -46,6 +46,12 @@ namespace ConsoleApplication2.ViewModel
             }
         }
 
+        public List<CustomerAccounts> CustomerAccounts
+        {
+            get { return this._customerAccounts; }
+            set { this._customerAccounts = value; }
+        }
+
         //chain of responsibility
         public List<Transaction> OutgoingTransactions()
         {
@@ -54,8 +60,9 @@ namespace ConsoleApplication2.ViewModel
             {
                 foreach (Transaction trans in custAcc.OutgoingTransactions())
                 {
-                    if (!(trans.ForeignCard % (this.Signature * 1000) == 
-                        (trans.ForeignCard - 1000 * this.Signature)))
+                    uint signature = trans.ForeignCard;
+                    while (signature > 9999) signature /= 10;
+                    if (!(signature == this.Signature))
                     {
                         unresolvedTransactions.Add(trans);
                     }
@@ -72,7 +79,7 @@ namespace ConsoleApplication2.ViewModel
                     }
                 }
             }
-            return new List<Transaction>();
+            return unresolvedTransactions;
         }
 
         private int ID
