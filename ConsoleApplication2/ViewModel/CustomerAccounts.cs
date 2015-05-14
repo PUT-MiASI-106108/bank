@@ -11,8 +11,6 @@ namespace ConsoleApplication2.ViewModel
         private Customer _customer;
         private List<AccountControler> _accounts;
 
-
-
         public CustomerAccounts(Customer cust, Account acc)
         {
             this._customer = cust;
@@ -23,6 +21,7 @@ namespace ConsoleApplication2.ViewModel
         public List<AccountControler> Accounts
         {
             get { return this._accounts; }
+            set { this._accounts = value; }
         }
 
         public Customer Customer
@@ -36,6 +35,53 @@ namespace ConsoleApplication2.ViewModel
                 this._accounts.Add(new AccountControler(new Account(type, this._customer.ID, 1234)));
             else
                 throw new Exception();
+        }
+
+        public bool isAccountOwner(uint accNumber)
+        {
+            foreach (AccountControler acc in this._accounts)
+            {
+                if (acc.Account.CardNumber == accNumber)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        //chain of responsibility
+        public List<Transaction> OutgoingTransactions()
+        {
+            List<Transaction> transactions = new List<Transaction>();
+            foreach (AccountControler accCont in this._accounts)
+            {
+                foreach (Transaction trans in accCont.OutgoingTransactions())
+                {
+                    if (!this.isAccountOwner(trans.ForeignCard))
+                    {
+                        transactions.Add(trans);
+                        trans.Completed = true;
+                    }
+                    else
+                    {
+                        if (trans.Amount > 20000)
+                        {
+                            throw new UnauthorizedAccessException("over 20000 transfer");
+                        }
+                        else
+                        {
+                            foreach (AccountControler accContr in this._accounts)
+                            {
+                                if (accContr.Account.CardNumber == trans.ForeignCard)
+                                {
+                                    accContr.deposit(trans.Amount, trans.ClientCard);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return transactions;
         }
     }
 }

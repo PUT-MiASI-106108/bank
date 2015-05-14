@@ -28,9 +28,30 @@ namespace ConsoleApplication2.ViewModel
                 throw new Exception();
         }
 
-        public void deposit(decimal amount)
+        public void deposit(decimal amount, uint sourceId)
         {
             this._account.deposit(amount);
+            base.newIncomingTransaction(amount, (uint)this.Account.CardNumber, sourceId, true);
+        }
+
+        //chain of responsibility
+        public List<Transaction> OutgoingTransactions()
+        {
+            List<Transaction> transactions = new List<Transaction>();
+            foreach (Transaction trans in base.Transactions)
+            {
+                if (!trans.Completed && trans.TransactionType.Equals(TransactionTypes.Outgoing))
+                {
+                    try
+                    {
+                        this.withraw(trans.Amount);
+                        transactions.Add(trans);
+                        trans.Completed = true;
+                    }
+                    catch { }
+                }
+            }
+            return transactions;
         }
     }
 }
