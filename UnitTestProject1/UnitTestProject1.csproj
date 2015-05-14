@@ -56,6 +56,16 @@
     <Compile Include="TransactionManagerTest.cs" />
     <Compile Include="TransactionTest.cs" />
     <Compile Include="AccountTest.cs" />
+    <Compile Include="DebitAccountTests.cs" />
+    <Compile Include="DebitAccountWithInterestTests.cs" />
+    <Compile Include="HtmlVisitorTests.cs" />
+    <Compile Include="IVisitorTests.cs" />
+    <Compile Include="ReportTests.cs" />
+    <Compile Include="ReportAllTests.cs" />
+    <Compile Include="ReportByAccNumberTests.cs" />
+    <Compile Include="ReportByMonthTests.cs" />
+    <Compile Include="BankTests.cs" />
+    <Compile Include="MediatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConsoleApplication2\ConsoleApplication2.csproj">
