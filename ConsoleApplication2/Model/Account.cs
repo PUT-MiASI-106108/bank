@@ -11,7 +11,7 @@ namespace ConsoleApplication2
     public class Account
     {
         private string _accountType;
-        private int _cardNumber;
+        private uint _cardNumber;
         private int _clientId;
         private decimal _balance;
         private InterestType InterestType;
@@ -20,7 +20,7 @@ namespace ConsoleApplication2
         {
             this._balance = 0m;
             this._clientId = clientId;
-            this._cardNumber = cardNumber;
+            this._cardNumber = (uint)cardNumber;
             if (accountType.Equals(AccountTypes.Oszczednosciowe) || accountType.Equals(AccountTypes.Kredytowe))
                 this._accountType = accountType;
             else 
@@ -54,7 +54,7 @@ namespace ConsoleApplication2
             get { return this._accountType; }
         }
 
-        public int CardNumber
+        public uint CardNumber
         {
             get { return this._cardNumber; }
         }
@@ -68,7 +68,5 @@ namespace ConsoleApplication2
         {
             get { return this._clientId; }
         }
-
-        
     }
 }

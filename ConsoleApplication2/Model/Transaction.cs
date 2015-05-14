@@ -9,13 +9,14 @@ namespace ConsoleApplication2
     public class Transaction
     {
         private uint _id;
-        private uint _amount;
+        private decimal _amount;
         private uint _clientCard;
         private uint _foreignCard;
         private string _transactionType;
         private DateTime _date;
+        private bool _completed;
 
-        public Transaction(uint id, uint clientCard, uint foreignCard, uint amount, string transactionType)
+        public Transaction(uint id, uint clientCard, uint foreignCard, decimal amount, string transactionType)
         {
             this._id =  id;
             this._clientCard = clientCard;
@@ -33,7 +34,7 @@ namespace ConsoleApplication2
             get { return this._id; }
         }
 
-        public uint Amount
+        public decimal Amount
         {
             get { return this._amount; }
         }
@@ -56,6 +57,12 @@ namespace ConsoleApplication2
         public DateTime Date
         {
             get { return this._date; }
+        }
+
+        public bool Completed
+        {
+            get { return this._completed; }
+            set { this._completed = value; }
         }
     }
 }
