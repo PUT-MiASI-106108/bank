@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ConsoleApplication2;
 using ConsoleApplication2.ViewModel;
 using System.Collections.Generic;
+using ConsoleApplication2.Factories;
 
 namespace UnitTestProject1
 {
@@ -16,8 +17,9 @@ namespace UnitTestProject1
         [TestMethod]
         public void addAccountTest()
         {
-            Customer cust = new Customer(1, "Kudela", "Gabriel");
-            Account account = new Account(AccountTypes.Oszczednosciowe, 1, 1);
+            ICustomerFactory cust = new CustomerFactory(1, "Kudela", "Gabriel");
+            var account = new AccountFactory(AccountTypes.Oszczednosciowe, 1, 1);
+            account.CreateAccount();
             CustomerAccounts Accounts = new CustomerAccounts(cust, account);
             int before = Accounts.Accounts.Count;
             Accounts.addAccount(AccountTypes.Kredytowe);
@@ -27,8 +29,8 @@ namespace UnitTestProject1
         [TestMethod]
         public void outgoingTransactionsTest()
         {
-            Customer cust = new Customer(1, "Kudela", "Gabriel");
-            Account account = new Account(AccountTypes.Oszczednosciowe, 1, 1);
+            ICustomerFactory cust = new CustomerFactory(1, "Kudela", "Gabriel");
+            IAccountFactory account = new AccountFactory(AccountTypes.Oszczednosciowe, 1, 1);
             CustomerAccounts Accounts = new CustomerAccounts(cust, account);
             Accounts.Accounts[0].deposit(50000m, 1);
             Accounts.Accounts[0].newOutgoingTransaction(500m, 1, 2);

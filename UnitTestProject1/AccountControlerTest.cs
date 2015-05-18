@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ConsoleApplication2;
 using ConsoleApplication2.ViewModel;
 using System.Collections.Generic;
+using ConsoleApplication2.Factories;
 
 namespace UnitTestProject1
 {
@@ -17,7 +18,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void withdrawalTest()
         {
-            Account account = new Account(AccountTypes.Oszczednosciowe, 1, 1);
+            IAccountFactory account = new AccountFactory(AccountTypes.Oszczednosciowe, 1, 1);
             AccountControler accountControler;
             accountControler = new AccountControler(account);
             try
@@ -35,7 +36,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void depositTest()
         {
-            Account account = new Account(AccountTypes.Oszczednosciowe, 1, 1);
+            var account = new AccountFactory(AccountTypes.Oszczednosciowe, 1, 1);
             AccountControler accountControler;
             accountControler = new AccountControler(account);
             decimal before = accountControler.Account.Balance;
@@ -47,7 +48,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void outgoingTransactionTest()
         {
-            Account account = new Account(AccountTypes.Oszczednosciowe, 1, 1);
+            IAccountFactory account = new AccountFactory(AccountTypes.Oszczednosciowe, 1, 1);
             AccountControler accountControler;
             accountControler = new AccountControler(account);
             accountControler.deposit(501m, 1);
