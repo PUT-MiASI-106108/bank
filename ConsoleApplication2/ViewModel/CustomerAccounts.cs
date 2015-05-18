@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleApplication2.Factories;
 
 namespace ConsoleApplication2.ViewModel
 {
@@ -11,9 +12,9 @@ namespace ConsoleApplication2.ViewModel
         private Customer _customer;
         private List<AccountControler> _accounts;
 
-        public CustomerAccounts(Customer cust, Account acc)
+        public CustomerAccounts(ICustomerFactory cust, IAccountFactory acc)
         {
-            this._customer = cust;
+            this._customer = cust.CreateCustomer();
             this._accounts = new List<AccountControler>();
             this._accounts.Add(new AccountControler(acc));
         }
@@ -32,7 +33,7 @@ namespace ConsoleApplication2.ViewModel
         public void addAccount(string type)
         {
             if (type.Equals(AccountTypes.Kredytowe) || type.Equals(AccountTypes.Oszczednosciowe))
-                this._accounts.Add(new AccountControler(new Account(type, this._customer.ID, 1234)));
+                this._accounts.Add(new AccountControler(new AccountFactory(type, this._customer.ID, 1234)));
             else
                 throw new Exception();
         }

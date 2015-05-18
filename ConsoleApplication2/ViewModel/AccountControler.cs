@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleApplication2.Factories;
 
 namespace ConsoleApplication2.ViewModel
 {
@@ -10,9 +11,9 @@ namespace ConsoleApplication2.ViewModel
     {
         private Account _account;
 
-        public AccountControler(Account acc)
+        public AccountControler(IAccountFactory acc)
         {
-            this._account = acc;
+            this._account = acc.CreateAccount();
         }
 
         public Account Account

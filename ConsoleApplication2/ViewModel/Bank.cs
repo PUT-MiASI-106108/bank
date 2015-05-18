@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleApplication2.Factories;
 
 namespace ConsoleApplication2.ViewModel
 {
@@ -23,8 +24,8 @@ namespace ConsoleApplication2.ViewModel
 
         public void addCustomer(string name, string surname)
         {
-            Customer customer = new Customer(this.CustId, name, surname);
-            Account acc = new Account(AccountTypes.Oszczednosciowe,customer.ID,
+            ICustomerFactory customer = new CustomerFactory(this.CustId, name, surname);
+            IAccountFactory acc = new AccountFactory(AccountTypes.Oszczednosciowe,this.CustId,
                 this.Signature*1000+this.ID);
             this._customerAccounts.Add(new CustomerAccounts(customer, acc));
         }
