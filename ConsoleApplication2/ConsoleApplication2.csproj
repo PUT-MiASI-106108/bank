@@ -43,6 +43,12 @@
   <ItemGroup>
     <Compile Include="Decorator\DebitAccount.cs" />
     <Compile Include="Decorator\DebitAccountWithInterest.cs" />
+    <Compile Include="Factories\AccountFactory.cs" />
+    <Compile Include="Factories\BankFactory.cs" />
+    <Compile Include="Factories\CustomerFactory.cs" />
+    <Compile Include="Factories\IAccountFactory.cs" />
+    <Compile Include="Factories\IBankFactory.cs" />
+    <Compile Include="Factories\ICustomerFactory.cs" />
     <Compile Include="Mediator\Mediator.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\AccountTypes.cs" />
